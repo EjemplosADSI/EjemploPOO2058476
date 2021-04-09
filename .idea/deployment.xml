@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="PublishConfigData" serverName="Laragon" remoteFilesAllowedToDisappearOnAutoupload="false">
+    <serverData>
+      <paths name="Laragon">
+        <serverdata>
+          <mappings>
+            <mapping deploy="\EjemploPOO2058476" local="$PROJECT_DIR$" web="/EjemploPOO2058476" />
+          </mappings>
+        </serverdata>
+      </paths>
+    </serverData>
+  </component>
+</project>
