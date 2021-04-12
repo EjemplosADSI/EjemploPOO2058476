@@ -177,10 +177,10 @@ class Lavadora
     public function create(): bool
     {
         if($this->getMarca() != null){
-            echo "Se inserto la lavadora: ".$this->getMarca();
+            echo "Se inserto la lavadora: ".$this->getMarca()."\n";
             return true;
         }else{
-            echo "No se encontraron datos de la lavadora";
+            echo "No se encontraron datos de la lavadora"."\n";
             return false;
         }
     }
@@ -192,10 +192,10 @@ class Lavadora
     public function edit(): bool
     {
         if($this->getMarca() != null){
-            echo "Se actualizo la lavadora: ".$this->getMarca();
+            echo "Se actualizo la lavadora: ".$this->getMarca()."\n";
             return true;
         }else{
-            echo "No se encontraron datos de la lavadora";
+            echo "No se encontraron datos de la lavadora"."\n";
             return false;
         }
     }
@@ -208,11 +208,11 @@ class Lavadora
     public function search(String $campo, String $valor): ?array
     {
         if(!empty($campo) && !empty($valor)){
-            echo "Se busco la cadena: ".$valor." en la columna: ".$campo;
+            echo "Se busco la cadena: ".$valor." en la columna: ".$campo."\n";
 
             return array();
         }else{
-            echo "No se enviaron parametros de busqueda";
+            echo "No se enviaron parametros de busqueda"."\n";
             return null;
         }
     }
@@ -225,7 +225,7 @@ class Lavadora
     public function searchAll(): ?array
     {
         $query = "SELECT * FROM TABLA";
-        echo "Se realizo la busqueda con el query: ".$query." se devolvieron los resultados";
+        echo "Se realizo la busqueda con el query: ".$query." se devolvieron los resultados"."\n";
         return array();
     }
 
@@ -237,7 +237,7 @@ class Lavadora
     public function searchForId(int $Id): ?Lavadora
     {
         $query = "SELECT * FROM TABLA WHERE id = ".$Id;
-        echo "Se realizo la busqueda con el query: ".$Id." y se devolvio el objeto";
+        echo "Se realizo la busqueda con el ID: ".$Id." y se devolvio el objeto"."\n";
         return null;
     }
 
@@ -251,10 +251,10 @@ class Lavadora
         $lavadoraEliminar = $this->searchForId($IdLavadora);
         if(!empty($lavadoraEliminar)){
             $lavadoraEliminar->setEstado("Inactiva");
-            echo "Se cambio el estado de la lavadora con ".$IdLavadora." a inactivo";
+            echo "Se cambio el estado de la lavadora con ".$IdLavadora." a inactivo"."\n";
             return true;
         }else{
-            echo "NO se encontro la lavadora con el ID: ".$IdLavadora;
+            echo "NO se encontro la lavadora con el ID: ".$IdLavadora."\n";
             return false;
         }
     }
@@ -266,7 +266,7 @@ class Lavadora
      */
     public function agregarRopa(int $numeroPrendas, float $peso): ?bool
     {
-        echo "se agrego ropa a la lavadora";
+        echo "se agrego ropa a la lavadora"."\n";
         return null;
     }
 
