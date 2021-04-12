@@ -11,6 +11,7 @@ class Lavadora
     private float $capacidad;
     private string $fechaLanzamiento; //Carbon
     private float $voltaje;
+    private String $estado; // PHP 8 ENUM
 
     /* Acciones - Metodos */
     /**
@@ -28,7 +29,8 @@ class Lavadora
         int $numeroSerie = 0,
         float $capacidad = 0.0,
         string $fechaLanzamiento = "",
-        float $voltaje = 0.0
+        float $voltaje = 0.0,
+        string $estado = "Activa"
     )
     {
         $this->color = $color;
@@ -37,6 +39,7 @@ class Lavadora
         $this->capacidad = $capacidad;
         $this->fechaLanzamiento = $fechaLanzamiento;
         $this->voltaje = $voltaje;
+        $this->estado = $estado;
     }
 
     public function __destruct()
@@ -51,7 +54,8 @@ class Lavadora
             "Numero de Serie: ".$this->getNumeroSerie()."\n".
             "Capacidad: ".$this->getCapacidad()."\n".
             "Fecha Lanzamiento: ".$this->getFechaLanzamiento()."\n".
-            "Voltaje: ".$this->getVoltaje()."\n";
+            "Voltaje: ".$this->getVoltaje()."\n".
+            "Estado: ".$this->getEstado()."\n";
     }
 
     /**
@@ -150,6 +154,120 @@ class Lavadora
         $this->voltaje = $voltaje;
     }
 
+    /**
+     * @return String
+     */
+    public function getEstado(): string
+    {
+        return $this->estado;
+    }
 
+    /**
+     * @param String $estado
+     */
+    public function setEstado(string $estado): void
+    {
+        $this->estado = $estado;
+    }
+
+    /**
+     * @param
+     * @return bool
+     */
+    public function create(): bool
+    {
+        if($this->getMarca() != null){
+            echo "Se inserto la lavadora: ".$this->getMarca();
+            return true;
+        }else{
+            echo "No se encontraron datos de la lavadora";
+            return false;
+        }
+    }
+
+    /**
+     * @param
+     * @return bool
+     */
+    public function edit(): bool
+    {
+        if($this->getMarca() != null){
+            echo "Se actualizo la lavadora: ".$this->getMarca();
+            return true;
+        }else{
+            echo "No se encontraron datos de la lavadora";
+            return false;
+        }
+    }
+
+    /**
+     * @param String $campo
+     * @param String $valor
+     * @return array|null
+     */
+    public function search(String $campo, String $valor): ?array
+    {
+        if(!empty($campo) && !empty($valor)){
+            echo "Se busco la cadena: ".$valor." en la columna: ".$campo;
+
+            return array();
+        }else{
+            echo "No se enviaron parametros de busqueda";
+            return null;
+        }
+    }
+
+    /**
+     * @param String $campo
+     * @param String $valor
+     * @return array|null
+     */
+    public function searchAll(): ?array
+    {
+        $query = "SELECT * FROM TABLA";
+        echo "Se realizo la busqueda con el query: ".$query." se devolvieron los resultados";
+        return array();
+    }
+
+    /**
+     * @param String $campo
+     * @param String $valor
+     * @return array|null
+     */
+    public function searchForId(int $Id): ?Lavadora
+    {
+        $query = "SELECT * FROM TABLA WHERE id = ".$Id;
+        echo "Se realizo la busqueda con el query: ".$Id." y se devolvio el objeto";
+        return null;
+    }
+
+    /**
+     * @param String $campo
+     * @param String $valor
+     * @return array|null
+     */
+    public function deleted(int $IdLavadora): ?bool
+    {
+        $lavadoraEliminar = $this->searchForId($IdLavadora);
+        if(!empty($lavadoraEliminar)){
+            $lavadoraEliminar->setEstado("Inactiva");
+            echo "Se cambio el estado de la lavadora con ".$IdLavadora." a inactivo";
+            return true;
+        }else{
+            echo "NO se encontro la lavadora con el ID: ".$IdLavadora;
+            return false;
+        }
+    }
+
+    /**
+     * @param String $campo
+     * @param String $valor
+     * @return array|null
+     */
+    public function agregarRopa(int $numeroPrendas, float $peso): ?bool
+    {
+        echo "se agrego ropa a la lavadora";
+        return null;
+    }
 
 }
