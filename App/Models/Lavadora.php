@@ -1,44 +1,41 @@
 <?php
-
 namespace App\Models;
+include "Electrodomestico.php";
 
-class Lavadora
+use App\Models\Electrodomestico;
+
+class Lavadora extends Electrodomestico
 {
     /* Propiedades - Atributos */
-    private string $color = "Blanco";
-    private string $marca;
-    private int $numeroSerie;
     private float $capacidad;
-    private string $fechaLanzamiento; //Carbon
-    private float $voltaje;
     private String $estado; // PHP 8 ENUM
 
     /* Acciones - Metodos */
     /**
      * Lavadora constructor.
-     * @param string $color
-     * @param string $marca
-     * @param int $numeroSerie
      * @param float $capacidad
-     * @param string $fechaLanzamiento
-     * @param float $voltaje
      */
     public function __construct(
         string $color = "",
         string $marca = "",
+        string $modelo = "",
         int $numeroSerie = 0,
         float $capacidad = 0.0,
         string $fechaLanzamiento = "",
         float $voltaje = 0.0,
+        float $consumoWatts = 0.0,
         string $estado = "Activa"
     )
     {
+        parent::__construct();
         $this->color = $color;
         $this->marca = $marca;
+        $this->modelo = $modelo;
         $this->numeroSerie = $numeroSerie;
         $this->capacidad = $capacidad;
         $this->fechaLanzamiento = $fechaLanzamiento;
         $this->voltaje = $voltaje;
+        $this->consumoWatts = $consumoWatts;
         $this->estado = $estado;
     }
 
@@ -49,61 +46,8 @@ class Lavadora
 
     public function __toString(): string
     {
-        return "\n"."Color: ".$this->getColor()."\n".
-            "Marca: ".$this->getMarca()."\n".
-            "Numero de Serie: ".$this->getNumeroSerie()."\n".
-            "Capacidad: ".$this->getCapacidad()."\n".
-            "Fecha Lanzamiento: ".$this->getFechaLanzamiento()."\n".
-            "Voltaje: ".$this->getVoltaje()."\n".
+        return parent::__toString()."\n"."Capacidad: ".$this->getCapacidad()."\n".
             "Estado: ".$this->getEstado()."\n";
-    }
-
-    /**
-     * @return string
-     */
-    public function getColor(): string
-    {
-        return $this->color;
-    }
-
-    /**
-     * @param string $color
-     */
-    public function setColor(string $color): void
-    {
-        $this->color = $color;
-    }
-
-    /**
-     * @return string
-     */
-    public function getMarca(): string
-    {
-        return $this->marca;
-    }
-
-    /**
-     * @param string $marca
-     */
-    public function setMarca(string $marca): void
-    {
-        $this->marca = $marca;
-    }
-
-    /**
-     * @return int
-     */
-    public function getNumeroSerie(): int
-    {
-        return $this->numeroSerie;
-    }
-
-    /**
-     * @param int $numeroSerie
-     */
-    public function setNumeroSerie(int $numeroSerie): void
-    {
-        $this->numeroSerie = $numeroSerie;
     }
 
     /**
@@ -125,45 +69,13 @@ class Lavadora
     /**
      * @return string
      */
-    public function getFechaLanzamiento(): string
-    {
-        return $this->fechaLanzamiento;
-    }
-
-    /**
-     * @param string $fechaLanzamiento
-     */
-    public function setFechaLanzamiento(string $fechaLanzamiento): void
-    {
-        $this->fechaLanzamiento = $fechaLanzamiento;
-    }
-
-    /**
-     * @return float
-     */
-    public function getVoltaje(): float
-    {
-        return $this->voltaje;
-    }
-
-    /**
-     * @param float $voltaje
-     */
-    public function setVoltaje(float $voltaje): void
-    {
-        $this->voltaje = $voltaje;
-    }
-
-    /**
-     * @return String
-     */
     public function getEstado(): string
     {
         return $this->estado;
     }
 
     /**
-     * @param String $estado
+     * @param string $estado
      */
     public function setEstado(string $estado): void
     {
