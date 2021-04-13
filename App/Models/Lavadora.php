@@ -1,6 +1,8 @@
 <?php
 namespace App\Models;
 include "Electrodomestico.php";
+include "MaquinaDigital.php";
+include "CalcularConsumo.php";
 use App\Models\Electrodomestico;
 
 class Lavadora extends Electrodomestico implements MaquinaDigital, \JsonSerializable
@@ -198,9 +200,9 @@ class Lavadora extends Electrodomestico implements MaquinaDigital, \JsonSerializ
         // TODO: Implement mostrarResultado() method.
     }
 
-    public function reiniciarSistema()
+    public function reiniciarSistema($boton):bool
     {
-        // TODO: Implement reiniciarSistema() method.
+        return true;
     }
 
     public function oprimirPanelTactil()

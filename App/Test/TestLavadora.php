@@ -20,7 +20,6 @@ $lavadoraLG->deleted(1);
 $lavadoraLG->agregarRopa(5,35.6);
 
 $lavadoraLG->calculoLuz(123,456);
-$lavadoraLG->encender();
 $lavadoraLG->apagar();
 
 //echo $lavadoraSamsung;
