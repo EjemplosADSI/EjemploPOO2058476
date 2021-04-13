@@ -4,7 +4,7 @@
 namespace App\Models;
 
 
-class Electrodomestico
+abstract class Electrodomestico
 {
     protected float $voltaje;
     protected float $consumoWatts;
@@ -13,6 +13,9 @@ class Electrodomestico
     protected int $numeroSerie;
     protected string $fechaLanzamiento; //Carbon
     protected string $modelo;
+
+    abstract protected function encendido();
+    abstract protected function apagado();
 
     /**
      * Electrodomestico constructor.
@@ -169,18 +172,6 @@ class Electrodomestico
             "Numero de Serie: ".$this->getNumeroSerie()."\n".
             "Fecha Lanzamiento: ".$this->getFechaLanzamiento()."\n".
             "Modelo: ".$this->getModelo()."\n";
-    }
-
-
-    /**
-     * @param String $campo
-     * @param String $valor
-     * @return array|null
-     */
-    public function encender(): ?bool
-    {
-        echo "Se encendio el electrodomestico"."\n";
-        return true;
     }
 
     /**

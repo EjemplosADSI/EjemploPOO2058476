@@ -1,11 +1,12 @@
 <?php
 namespace App\Models;
 include "Electrodomestico.php";
-
 use App\Models\Electrodomestico;
 
-class Lavadora extends Electrodomestico
+class Lavadora extends Electrodomestico implements MaquinaDigital, \JsonSerializable
 {
+    use CalcularConsumo;
+
     /* Propiedades - Atributos */
     private float $capacidad;
     private String $estado; // PHP 8 ENUM
@@ -182,4 +183,33 @@ class Lavadora extends Electrodomestico
         return null;
     }
 
+    protected function encendido()
+    {
+        // TODO: Implement encendido() method.
+    }
+
+    protected function apagado()
+    {
+        // TODO: Implement apagado() method.
+    }
+
+    public function mostrarResultado(string $cadena)
+    {
+        // TODO: Implement mostrarResultado() method.
+    }
+
+    public function reiniciarSistema()
+    {
+        // TODO: Implement reiniciarSistema() method.
+    }
+
+    public function oprimirPanelTactil()
+    {
+        // TODO: Implement oprimirPanelTactil() method.
+    }
+
+    public function jsonSerialize()
+    {
+        // TODO: Implement jsonSerialize() method.
+    }
 }
